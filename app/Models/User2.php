@@ -14,3 +14,4 @@ class User2 extends Model
         'phone',
     ];
 }
+

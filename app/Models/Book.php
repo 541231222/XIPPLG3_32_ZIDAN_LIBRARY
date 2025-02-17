@@ -25,10 +25,10 @@ class Book extends Model
         return $this->hasMany(Review::class);
     }
 
-    // public function loan()
-    // {
-    //     return $this->hasMany(Loan::class);
-    // }
+    public function loan()
+    {
+        return $this->hasMany(Loan::class);
+    }
 
     public function category()
     {

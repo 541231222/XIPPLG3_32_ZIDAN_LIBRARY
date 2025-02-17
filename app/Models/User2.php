@@ -24,9 +24,9 @@ class User2 extends Model
         return $this->hasMany(Book::class);
     }
 
-    // public function loan()
-    // {
-    //     return $this->hasMany(Loan::class);
-    // }
+    public function loan()
+    {
+        return $this->hasMany(Loan::class);
+    }
 }
 

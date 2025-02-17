@@ -2,99 +2,101 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
+use App\Models\Loan;
 use Illuminate\Http\Request;
 
-class BookController extends Controller
+class LoanController extends Controller
 {
     public function index()
     {
-        $books = Book::all();
+        $loans = Loan::all();
 
         return response()->json([
             'status' => 200,
-            'message' => 'Books retrieved succesfully',
-            'data' => $books
+            'message' => 'Categories retrieved succesfully',
+            'data' => $loans
         ], 200);
     }
 
     public function store(Request $request)
     {
-        $books = Book::create($request->all());
+        $request->validate([
+            'book_id' => 'required',
+            'user_id' => 'required',
+            'loan_date' => 'required',
+            'return_date' => 'required',
+            'status' => 'required'
+        ]);
+
+        $loans = loan::create($request->all());
 
         return response()->json([
             'status' => 201,
-            'message' => 'Book created succesfully',
-            'data' => $books
+            'message' => 'loans created succesfully',
+            'data' => $loans
         ], 201);
     }
 
     public function show($id)
     {
-        $books = Book::find($id);
+        $loans = loan::find($id);
 
-        if (!$books) {
+        if (!$loans) {
             return response()->json([
                 'status' => 404,
-                'message' => 'Book not found',
+                'message' => 'loans not found',
                 'data' => null
             ],404);
         }
 
         return response()->json([
             'status' => 200,
-            'message' => 'Book retrieved succesfully',
-            'data' => $books
+            'message' => 'loans retrieved succesfully',
+            'data' => $loans
         ], 200);
     }
 
     public function update(Request $request, $id)
     {
-        $books = Book::find($id);
+        $loans = loan::find($id);
 
-        if(!$books) {
+        if(!$loans) {
             return response()->json([
                 'status' => 404,
-                'message' => 'Book not found',
+                'message' => 'loans not found',
                 'data' => null
             ], 404);
         }
 
         $request->validate([
-            'title' => 'required|string',
-            'writer' => 'required|string',
-            'user_id' => 'required',
-            'category_id' => 'required',
-            'publisher' => 'required|string',
-            'year' => 'required|integer',
+            'name' => 'string|max:255'
         ]);
-
-        $books->update($request->all());
+        $loans->update($request->all());
 
         return response()->json([
             'status' => 200,
-            'message' => 'Book updated succesfully',
-            'data' => $books
+            'message' => 'loans updated succesfully',
+            'data' => $loans
         ], 200);
     }
 
     public function destroy($id)
     {
-        $books = Book::find($id);
+        $loans = loan::find($id);
 
-        if(!$books) {
+        if(!$loans) {
             return response()->json([
                 'status' => 404,
-                'message' => 'Book not found',
+                'message' => 'loans not found',
                 'data' => null
             ], 404);
         }
 
-        $books->delete();
+        $loans->delete();
 
         return response()->json([
             'status' => 200,
-            'message' => 'Book deleted succesfully',
+            'message' => 'loans deleted succesfully',
             'data' => null
         ], 200);
     }

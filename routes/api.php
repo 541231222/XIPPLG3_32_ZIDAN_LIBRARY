@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LoanController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\User2Controller;
 use Illuminate\Http\Request;
@@ -18,3 +19,5 @@ Route::apiResource('users', User2Controller::class);
 Route::apiResource('reviews', ReviewController::class);
 
 Route::apiResource('books', BookController::class);
+
+Route::apiResource('loans', LoanController::class);

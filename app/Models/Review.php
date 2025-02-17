@@ -13,10 +13,10 @@ class Review extends Model
         'comment',
     ];
 
-    // public function book()
-    // {
-    //     return $this->belongsTo(Book::class);
-    // }
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
+    }
 
     public function user()
     {

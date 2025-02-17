@@ -13,5 +13,20 @@ class User2 extends Model
         'username',
         'phone',
     ];
+
+    public function review()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function book()
+    {
+        return $this->hasMany(Book::class);
+    }
+
+    // public function loan()
+    // {
+    //     return $this->hasMany(Loan::class);
+    // }
 }
 

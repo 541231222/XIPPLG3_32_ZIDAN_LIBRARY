@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\User2Controller;
@@ -15,3 +16,5 @@ Route::apiResource('categories', CategoryController::class);
 Route::apiResource('users', User2Controller::class);
 
 Route::apiResource('reviews', ReviewController::class);
+
+Route::apiResource('books', BookController::class);
